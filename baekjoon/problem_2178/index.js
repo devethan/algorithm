@@ -12,13 +12,11 @@ const rl = require('readline')
       .split(' ')
       .map(Number);
     result = input.map((r) => r.split('').map(Number));
-    const visited = input.map((r) => r.split('').fill(false));
-    visited[0][0] = true;
     const availablePoints = [[0, 0]];
-    console.log(fnc(availablePoints, visited));
+    console.log(fnc(availablePoints));
   });
 
-const fnc = (availablePoints, visited) => {
+const fnc = (availablePoints) => {
   const dx = [0, 0, -1, 1];
   const dy = [-1, 1, 0, 0];
   const [row, column] = rc;
@@ -28,10 +26,9 @@ const fnc = (availablePoints, visited) => {
       const nx = x + dx[i];
       const ny = y + dy[i];
       if (nx >= 0 && nx < row && ny >= 0 && ny < column) {
-        if (result[nx][ny] !== 0 && visited[nx][ny] === false) {
+        if (result[nx][ny] === 1) {
           availablePoints.push([nx, ny]);
           result[nx][ny] = result[x][y] + 1;
-          visited[nx][ny] = true;
         }
       }
     }
