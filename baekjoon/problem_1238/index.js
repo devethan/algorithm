@@ -11,38 +11,34 @@ const rl = require('readline')
     [N, M, X] = input.shift().split(' ').map(Number);
 
     let time = [];
-    for (let i = 0; i <= N; i++) {
+    for (let i = 0; i < N; i++) {
       time.push([]);
     }
 
     while (M-- > 0) {
       const [i, j, c] = input.shift().split(' ').map(Number);
-      time[i].push([j, c]);
+      time[i - 1].push([j - 1, c]);
     }
 
     var temp = [];
-    var result = [];
-    for (var i = 1; i <= N; i++) {
+    for (var i = 0; i < N; i++) {
       var arr = dijkstra(i, time);
       temp[i] = arr;
     }
 
-    for (var i = 1; i <= N; i++) {
-      if (i !== X) {
-        result.push(temp[i][X] + temp[X][i]);
+    let max = 0;
+    for (let i = 0; i < N; i++) {
+      if ( max < temp[i][X] + temp[X][i] ) {
+        max = temp[i][X] + temp[X][i];
       }
     }
-
-    var max = result.reduce(function(pre, cur) {
-      return pre > cur ? pre : cur;
-    });
 
     console.log(max);
   });
 
 function dijkstra(start, map) {
   var dist = [];
-  for (var i = 1; i <= N; i++) {
+  for (var i = 0; i < N; i++) {
     dist[i] = Infinity;
   }
 
