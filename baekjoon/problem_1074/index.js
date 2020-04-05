@@ -18,18 +18,18 @@ const rl = require('readline')
       let t = Math.pow(2, N) / 2;
       let f = Math.pow(4, N);
 
-      if (r < y && c < x) { // 1사분면
+      if (r < y && c < x) { // 1번째
         x -= t;
         y -= t;
-      } else if (r < y && x <= c) { // 2사분면
+      } else if (r < y && x <= c) { // 2번째
         x += t;
         y -= t;
         ans += f;
-      } else if (y <= r && c < x) { // 3사분면
+      } else if (y <= r && c < x) { // 3번째
         x -= t;
         y += t;
         ans += f * 2;
-      } else {  // 4사분면
+      } else {  // 4번째
         x += t;
         y += t;
         ans += f * 3;
