@@ -1,4 +1,4 @@
-# 플로이드
+# 
 
 https://www.acmicpc.net/problem/1238
 
